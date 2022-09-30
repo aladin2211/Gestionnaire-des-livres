@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8" />
+<title>Fiche Livre</title>
+<link rel="stylesheet" type="text/css"
+href="../static/css/bootstrap.min.css"
+th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+href="../static/css/mon_style.css" th:href="@{/css/mon_style.css}" />
+</head>
+<body>
+<div layout:fragment="content">
+<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+<div class="panel panel-default">
+<div class="panel-heading">Saisie d'un Livre</div>
+<div class="panel-body">
+<form th:action="@{save}" method="post" th:object="${livre}">
+<div class="form-group">
+<label class="control-label">Titre</label>
+
+<input class="form-control" type="text" th:field="*{titre}" />
+<span class="red" th:errors="*{titre}"></span>
+</div>
+
+<div class="form-group">
+<label class="control-label">Isbn</label>
+
+<input class="form-control" type="text" th:field="*{titre}" />
+<span class="red" th:errors="*{isbn}"></span>
+</div>
+
+<div class="form-group">
+<label class="control-label">Prix</label>
+
+<input class="form-control" type="text" th:field="*{prix}" />
+<span class="red" th:errors="*{prix}"></span>
+
+</div>
+<div class="form-group">
+<label class="control-label">QteStock</label>
+
+<input class="form-control" type="text" th:field="*{qteStock}" />
+<span class="red" th:errors="*{qteStock}"></span>
+
+</div>
+<div class="form-group">
+<label class="control-label">image Url</label>
+
+<input class="form-control" type="text" th:field="*{img}" />
+</div>
+<div class="form-group">
+<label class="control-label">DateEdition</label>
+
+<input class="form-control" type="date" th:field="*{dateEdition}" />
+<span class="red" th:errors="*{dateEdition}"></span>
+
+</div>
+<div class="form-group">
+<label class="control-label">Catégorie</label>
+<select class="form-control"
+th:field="*{categorie}">
+<option th:each="c:${categories}" th:value="${c.id}"
+th:text="${c.designation}" />
+
+</select>
+<span class="red" th:errors="*{categorie}"></span>
+</div>
+
+<div>
+<button class="btn btn-primary" type="submit">Enregistrer</button>
+</div>
+</form>
+</div>
+<div class="panel-footer">----Gestion des Livres---</div>
+</div>
+</div>
+</div>
+</body></html>
